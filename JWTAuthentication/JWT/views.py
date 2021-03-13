@@ -4,6 +4,7 @@ from knox.models import AuthToken
 from .serializers import UserSerializer, RegisterSerializer, StudentSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.authentication import BasicAuthentication
 from .models import Student
 
 # Register API
@@ -22,7 +23,7 @@ class RegisterAPI(generics.GenericAPIView):
 class Studentview(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
-    authentication_classes = [JWTAuthentication]
+    authentication_classes = [BasicAuthentication, JWTAuthentication]
     permission_classes = [IsAuthenticated]
 
 
