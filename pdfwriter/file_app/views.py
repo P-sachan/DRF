@@ -41,6 +41,7 @@ class FileView(APIView):
       page.mergePage(new_pdf.getPage(0))
       output.addPage(page)
       pdfmodified_path = "./media/result/" + str(request.data['file'])
+      # breakpoint()
       # finally, write "output" to a real file
       outputStream = open(pdfmodified_path, "wb")
       output.write(outputStream)
